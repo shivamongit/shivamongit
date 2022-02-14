@@ -12,7 +12,7 @@
 
 - 👯 I’m looking to collaborate on **OpenSource Projects**
 
-- 👨‍💻 All of my projects are available at **[My Portfolio](https://.com)**
+- 👨‍💻 All of my projects are available at **[My Portfolio](https://portfolio-shivamongit.vercel.app/)**
 
 - 📫 How to reach me **shivam.akka@outlook.com**
 
