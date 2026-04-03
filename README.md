@@ -68,31 +68,55 @@ Real-time analytics dashboard with ML-powered anomaly detection. Isolation Fores
 
 ---
 
+### System design
+
+```
+                    ┌──────────────────────────────────────────────┐
+                    │           Enterprise AI Platforms             │
+                    │                                              │
+   ┌────────────┐   │  ┌──────────┐  ┌───────────┐  ┌──────────┐  │
+   │ Data       │──▶│  │ ETL /    │─▶│ Vector    │─▶│ LLM +    │  │
+   │ Sources    │   │  │ Parsers  │  │ Embeddings│  │ RAG      │  │
+   └────────────┘   │  └──────────┘  └───────────┘  └──────────┘  │
+                    │       │              │              │         │
+                    │       ▼              ▼              ▼         │
+                    │  ┌──────────┐  ┌───────────┐  ┌──────────┐  │
+                    │  │ FastAPI  │  │ FAISS     │  │ Streamlit│  │
+                    │  │ Backend  │  │ Index     │  │ / Angular│  │
+                    │  └──────────┘  └───────────┘  └──────────┘  │
+                    └──────────────────────────────────────────────┘
+
+patterns:  RAG · event-driven · modular monolith · IPC · RBAC
+protocols: REST · WebSocket · serial (RS-232) · CAN / CAN FD · UDS
+```
+
+---
+
 ### Enterprise platforms (proprietary)
 
-> Internal tools I architected and built at my company. Code is not public, but these represent 8 production systems delivered across AI, automotive, and enterprise domains.
+> 8 production systems I designed and built at an automotive company. Code is not public.
 
 **AI & Intelligent Automation**
 
-- **OpsAI** — AI-powered incident resolution engine integrated into enterprise ticketing. RAG pipeline with FAISS vector search across 21,000+ historical records (5,914 PBIs + 528 solutions). Multi-model inference (GPT-5.2, GPT-4o-mini) with confidence scoring. Reduced resolution time from days to minutes, 25% self-service rate. `Python` `FastAPI` `Streamlit` `Azure OpenAI` `FAISS` `Azure DevOps APIs`
+- **AI-Powered Incident Resolution Engine** — RAG pipeline with FAISS vector search across 21,000+ historical records (5,914 PBIs + 528 documented solutions). Multi-model inference with confidence scoring, integrated directly into enterprise ticketing system. Automated log-to-resolution mapping from CI/CD pipelines. Reduced resolution time from days to minutes, 25% self-service rate, 300+ tickets/month. `Python` `FastAPI` `Streamlit` `Azure OpenAI` `FAISS` `REST APIs`
 
-- **SAM** — AUTOSAR configuration intelligence platform. ETL pipeline parsing 10+ ARXML domains (ComM, Os, NvM, Dem, Dcm, RTE), generating 3072-dim embeddings for semantic search. Pre-calculation layer ensures accurate numeric comparisons across ECU releases. Natural language queries over 1000+ configuration parameters. `Python` `FastAPI` `Streamlit` `Azure OpenAI` `FAISS` `lxml` `Pandas`
+- **Automotive Configuration Intelligence Platform** — ETL pipeline parsing 10+ AUTOSAR domains (ComM, Os, NvM, Dem, Dcm, RTE) from complex ARXML schemas. 3072-dim semantic embeddings with FAISS vector similarity search. Pre-calculation layer that computes totals before LLM sees data — eliminating arithmetic errors. Natural language queries over 1000+ config parameters across multiple ECU releases. `Python` `FastAPI` `Streamlit` `Azure OpenAI` `FAISS` `lxml` `Pandas`
 
-- **RequirementsAI** — Intelligent document comparison using Azure OpenAI embeddings. Semantic change detection and classification across 10,000+ requirement items. GPT-powered explanations for compliance documentation. MD5-based caching for cost optimization. `Python` `Streamlit` `Azure OpenAI` `FAISS` `Pandas` `NumPy`
+- **Intelligent Document Comparison System** — Semantic document comparison using vector embeddings across 10,000+ requirement items. Automatic change classification (unchanged, modified, added, deleted) with LLM-powered compliance explanations. MD5-based caching for cost optimization, batch processing with rate-limit handling. `Python` `Streamlit` `Azure OpenAI` `FAISS` `Pandas` `NumPy`
 
 **Automotive & Embedded**
 
-- **BCT Tool** — Cross-platform desktop application for ECU bootloader confidence testing. Orchestrates firmware flashing, UDS diagnostics (ISO 14229), and robustness testing across CAN/CAN FD/FlexRay. Supports 4+ OEM vehicle programs with zero-code config, 30+ automated diagnostic services, 7 robustness test scenarios. 70% reduction in manual testing time. `Electron` `Angular` `TypeScript` `C#/.NET` `Python` `Vector XL API` `Node.js`
+- **ECU Bootloader Confidence Test Platform** — Cross-platform desktop app orchestrating firmware flashing, UDS diagnostics (ISO 14229), and robustness testing across CAN/CAN FD/FlexRay via Vector XL API. Real-time bidirectional IPC between UI and native executables with sub-100ms latency. 30+ diagnostic services automated, 7 robustness scenarios (power interruption, voltage variation, network failure). Supports 4+ OEM vehicle programs via zero-code JSON-driven config. 70% reduction in manual testing. `Electron` `Angular` `TypeScript` `C#/.NET` `Python` `Node.js`
 
-- **ERM HIL Setup** — Hardware-in-the-Loop test automation controlling 4 ECUs simultaneously via custom binary serial protocol. Real-time bidirectional communication with 12-byte response parsing. Configurable KL30/KL15, CAN FD, CANoe/CANape parameters with persistent presets and audit logging. 70% faster test setup. `C#` `.NET 4.6.1` `Windows Forms` `RS-232` `WMI`
+- **HIL Multi-ECU Test Automation Tool** — Hardware-in-the-Loop testing platform controlling 4 ECUs simultaneously via custom binary serial protocol (RS-232). 12-byte response parsing with bitwise state management for 6 configurable parameters per ECU. Persistent configuration presets, role-based access, comprehensive audit logging for automotive compliance. 70% faster test setup. `C#` `.NET 4.6.1` `Windows Forms` `RS-232` `WMI`
 
 **Enterprise Platforms**
 
-- **WoLET** — Full-stack workload estimation platform with 37+ REST endpoints. 4-step guided wizard integrating 3 enterprise data sources (Clarity, OnePlan, Actuals). Real-time multi-factor cost calculations, automated OnePlan-compatible Excel export. Reduced estimation time by 70% across 50+ engineering teams. `Angular 16` `TypeScript` `PrimeNG` `FastAPI` `PostgreSQL` `SQLAlchemy` `Azure AD` `Kubernetes`
+- **Workload Estimation & Resource Forecasting Platform** — Full-stack system with 37+ async REST endpoints, PostgreSQL (10+ tables), and Angular frontend. 4-step guided wizard integrating 3 enterprise data sources into unified estimation workflow. Real-time multi-factor cost calculations across 9 global locations, automated Excel export. Deployed on Kubernetes with CI/CD. Reduced estimation time by 70% across 50+ engineering teams. `Angular 16` `FastAPI` `PostgreSQL` `SQLAlchemy` `Azure AD` `Kubernetes`
 
-- **DivOps** — Resource management system for 500+ engineers across 6 divisions. RBAC with 4 user personas, real-time project allocation tracking, automated financial reporting, multi-level WFH approval workflow with compliance scoring. Reduced allocation cycle time by 95%, saved 40+ hours/month of manual reporting. `Angular 16` `TypeScript` `RxJS` `PrimeNG` `OAuth2/JWT` `REST APIs`
+- **Enterprise Workforce Management System** — Resource management platform serving 5,000+ employees across 6 divisions. RBAC with 4 user personas and hierarchical data visibility. Real-time project allocation tracking, automated financial reporting engine processing 1000+ records, multi-level approval workflows with compliance scoring. Bi-directional sync with corporate project management tools. Reduced allocation cycle time by 95%, saved 40+ hours/month. `Angular 16` `TypeScript` `RxJS` `PrimeNG` `OAuth2/JWT`
 
-- **LearnOps** — Enterprise training operations platform automating nomination, approval, waitlist, and attendance workflows. Role-aware navigation with enterprise SSO/OIDC, integrated dashboards, and automated communications. Replaced manual email-driven processes across the organization. `Angular` `TypeScript` `RxJS` `Enterprise SSO` `REST APIs`
+- **Enterprise Training Operations Platform** — Workforce training lifecycle system managing nomination, approval, waitlist, and attendance workflows for 5,000+ employees. Multi-role access governance with enterprise SSO/OIDC, integrated operational dashboards, automated communications, and spreadsheet import/export for bulk operations. Replaced manual email-driven processes organization-wide. `Angular` `TypeScript` `RxJS` `Enterprise SSO` `REST APIs`
 
 ---
 
