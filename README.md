@@ -68,15 +68,31 @@ Real-time analytics dashboard with ML-powered anomaly detection. Isolation Fores
 
 ---
 
-### Enterprise work (proprietary)
+### Enterprise platforms (proprietary)
 
-> These are internal tools built at my company — code is not public, but they represent the bulk of my engineering work.
+> Internal tools I architected and built at my company. Code is not public, but these represent 8 production systems delivered across AI, automotive, and enterprise domains.
 
-- **OpsAI** — RAG-powered incident resolution platform processing 21,000+ records, integrated into enterprise ticketing. 25% self-service resolution rate.
-- **RequirementsAI** — semantic document comparison using Azure OpenAI embeddings across 10,000+ requirement items with GPT-powered change explanations.
-- **SAM** — AUTOSAR configuration analytics with FAISS vector search, enabling natural language queries over automotive ECU releases.
-- **ERM HIL Tool** — C#/.NET desktop app controlling 4 ECUs simultaneously via custom serial protocol. Reduced test setup time by 70%.
-- **5 more** internal Angular/TypeScript tools for resource management, workload estimation, and QA automation.
+**AI & Intelligent Automation**
+
+- **OpsAI** — AI-powered incident resolution engine integrated into enterprise ticketing. RAG pipeline with FAISS vector search across 21,000+ historical records (5,914 PBIs + 528 solutions). Multi-model inference (GPT-5.2, GPT-4o-mini) with confidence scoring. Reduced resolution time from days to minutes, 25% self-service rate. `Python` `FastAPI` `Streamlit` `Azure OpenAI` `FAISS` `Azure DevOps APIs`
+
+- **SAM** — AUTOSAR configuration intelligence platform. ETL pipeline parsing 10+ ARXML domains (ComM, Os, NvM, Dem, Dcm, RTE), generating 3072-dim embeddings for semantic search. Pre-calculation layer ensures accurate numeric comparisons across ECU releases. Natural language queries over 1000+ configuration parameters. `Python` `FastAPI` `Streamlit` `Azure OpenAI` `FAISS` `lxml` `Pandas`
+
+- **RequirementsAI** — Intelligent document comparison using Azure OpenAI embeddings. Semantic change detection and classification across 10,000+ requirement items. GPT-powered explanations for compliance documentation. MD5-based caching for cost optimization. `Python` `Streamlit` `Azure OpenAI` `FAISS` `Pandas` `NumPy`
+
+**Automotive & Embedded**
+
+- **BCT Tool** — Cross-platform desktop application for ECU bootloader confidence testing. Orchestrates firmware flashing, UDS diagnostics (ISO 14229), and robustness testing across CAN/CAN FD/FlexRay. Supports 4+ OEM vehicle programs with zero-code config, 30+ automated diagnostic services, 7 robustness test scenarios. 70% reduction in manual testing time. `Electron` `Angular` `TypeScript` `C#/.NET` `Python` `Vector XL API` `Node.js`
+
+- **ERM HIL Setup** — Hardware-in-the-Loop test automation controlling 4 ECUs simultaneously via custom binary serial protocol. Real-time bidirectional communication with 12-byte response parsing. Configurable KL30/KL15, CAN FD, CANoe/CANape parameters with persistent presets and audit logging. 70% faster test setup. `C#` `.NET 4.6.1` `Windows Forms` `RS-232` `WMI`
+
+**Enterprise Platforms**
+
+- **WoLET** — Full-stack workload estimation platform with 37+ REST endpoints. 4-step guided wizard integrating 3 enterprise data sources (Clarity, OnePlan, Actuals). Real-time multi-factor cost calculations, automated OnePlan-compatible Excel export. Reduced estimation time by 70% across 50+ engineering teams. `Angular 16` `TypeScript` `PrimeNG` `FastAPI` `PostgreSQL` `SQLAlchemy` `Azure AD` `Kubernetes`
+
+- **DivOps** — Resource management system for 500+ engineers across 6 divisions. RBAC with 4 user personas, real-time project allocation tracking, automated financial reporting, multi-level WFH approval workflow with compliance scoring. Reduced allocation cycle time by 95%, saved 40+ hours/month of manual reporting. `Angular 16` `TypeScript` `RxJS` `PrimeNG` `OAuth2/JWT` `REST APIs`
+
+- **LearnOps** — Enterprise training operations platform automating nomination, approval, waitlist, and attendance workflows. Role-aware navigation with enterprise SSO/OIDC, integrated dashboards, and automated communications. Replaced manual email-driven processes across the organization. `Angular` `TypeScript` `RxJS` `Enterprise SSO` `REST APIs`
 
 ---
 
