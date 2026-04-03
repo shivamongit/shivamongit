@@ -68,30 +68,6 @@ Real-time analytics dashboard with ML-powered anomaly detection. Isolation Fores
 
 ---
 
-### System design
-
-```
-                    ┌──────────────────────────────────────────────┐
-                    │           Enterprise AI Platforms             │
-                    │                                              │
-   ┌────────────┐   │  ┌──────────┐  ┌───────────┐  ┌──────────┐  │
-   │ Data       │──▶│  │ ETL /    │─▶│ Vector    │─▶│ LLM +    │  │
-   │ Sources    │   │  │ Parsers  │  │ Embeddings│  │ RAG      │  │
-   └────────────┘   │  └──────────┘  └───────────┘  └──────────┘  │
-                    │       │              │              │         │
-                    │       ▼              ▼              ▼         │
-                    │  ┌──────────┐  ┌───────────┐  ┌──────────┐  │
-                    │  │ FastAPI  │  │ FAISS     │  │ Streamlit│  │
-                    │  │ Backend  │  │ Index     │  │ / Angular│  │
-                    │  └──────────┘  └───────────┘  └──────────┘  │
-                    └──────────────────────────────────────────────┘
-
-patterns:  RAG · event-driven · modular monolith · IPC · RBAC
-protocols: REST · WebSocket · serial (RS-232) · CAN / CAN FD · UDS
-```
-
----
-
 ### Enterprise platforms (proprietary)
 
 > 8 production systems I designed and built at an automotive company. Code is not public.
@@ -121,15 +97,6 @@ protocols: REST · WebSocket · serial (RS-232) · CAN / CAN FD · UDS
 ---
 
 <div align="center">
-
-<a href="https://github.com/shivamongit">
-  <img height="155" src="https://github-readme-stats.vercel.app/api?username=shivamongit&show_icons=true&count_private=true&theme=transparent&hide_border=true&title_color=c9d1d9&text_color=8b949e&icon_color=58a6ff&ring_color=58a6ff" />
-</a>
-<a href="https://github.com/shivamongit">
-  <img height="155" src="https://github-readme-stats.vercel.app/api/top-langs/?username=shivamongit&langs_count=6&count_private=true&layout=compact&theme=transparent&hide_border=true&title_color=c9d1d9&text_color=8b949e" />
-</a>
-
-<br/>
 
 <img src="https://streak-stats.demolab.com/?user=shivamongit&theme=transparent&hide_border=true&ring=58a6ff&fire=58a6ff&currStreakLabel=c9d1d9&sideLabels=8b949e&currStreakNum=c9d1d9&sideNums=8b949e&dates=4b5563" />
 
