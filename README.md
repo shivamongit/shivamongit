@@ -47,6 +47,15 @@ infra       Docker · Azure DevOps · GitHub Actions · Turborepo · Vite
 <tr>
 <td width="50%">
 
+**[ragpipe](https://github.com/shivamongit/ragpipe)** &nbsp; `RAG` `Framework` `Python`
+
+Production-grade modular RAG framework. Pluggable chunkers (token, recursive, semantic), embedders (OpenAI, local), FAISS/NumPy retrievers, cross-encoder rerankers, and generators — with built-in evaluation metrics (MRR, NDCG, faithfulness).
+
+`Python` `FAISS` `tiktoken` `OpenAI` `Sentence Transformers` `NumPy` `pytest` `PyPI`
+
+</td>
+<td width="50%">
+
 **[docmind](https://github.com/shivamongit/docmind)** &nbsp; `RAG` `FAISS` `FastAPI`
 
 RAG-powered document intelligence. Upload PDFs/DOCX/TXT, chunk & embed with OpenAI, query with cited answers via FAISS vector search and GPT-4o.
@@ -54,6 +63,8 @@ RAG-powered document intelligence. Upload PDFs/DOCX/TXT, chunk & embed with Open
 `React 18` `TypeScript` `FastAPI` `FAISS` `OpenAI` `tiktoken` `Tailwind` `Docker`
 
 </td>
+</tr>
+<tr>
 <td width="50%">
 
 **[synth-ui](https://github.com/shivamongit/synth-ui)** &nbsp; `React` `FastAPI` `AI`
@@ -63,8 +74,6 @@ AI-powered UI component generator. Describe what you need in plain English, get 
 `React 18` `TypeScript` `Tailwind` `Zustand` `FastAPI` `OpenAI` `Anthropic` `Turborepo`
 
 </td>
-</tr>
-<tr>
 <td width="50%">
 
 **[pulse](https://github.com/shivamongit/pulse)** &nbsp; `Angular` `ML` `WebSockets`
@@ -73,8 +82,6 @@ Real-time analytics dashboard with ML-powered anomaly detection. Isolation Fores
 
 `Angular 17` `TypeScript` `FastAPI` `WebSockets` `scikit-learn` `RxJS` `Tailwind`
 
-</td>
-<td width="50%">
 </td>
 </tr>
 </table>
